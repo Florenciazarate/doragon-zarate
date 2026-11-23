@@ -25,7 +25,6 @@ const aplicados = document.getElementById('aplicados')
 const total = document.getElementById('total')
 const vacio = document.getElementById('vacio')
 const botonMas = document.getElementById('cargar-mas')
-const botonLimpiar = document.getElementById('limpiar')
 const buscador = document.querySelector('.cabecera .buscador input')
 const formularioBuscador = document.querySelector('.cabecera .buscador')
 
@@ -207,15 +206,22 @@ function mostrarAplicados(filtros) {
         chips.push({ quitar: 'texto', valor: '', texto: 'Búsqueda: ' + buscador.value.trim() })
     }
 
-    aplicados.innerHTML = chips
-        .map(
-            (chip) => `
+    // Con 2 o mas filtros aplicados aparece "Limpiar todo" (con uno solo alcanza la ×)
+    const limpiarTodo =
+        chips.length >= 2
+            ? `<li><button class="limpiar-todo" type="button" data-limpiar-todo>Limpiar todo</button></li>`
+            : ''
+
+    aplicados.innerHTML =
+        chips
+            .map(
+                (chip) => `
     <li class="etiqueta">
       ${chip.texto}
       <button type="button" data-quitar="${chip.quitar}" data-valor="${chip.valor}" aria-label="Quitar filtro ${chip.texto}">×</button>
     </li>`
-        )
-        .join('')
+            )
+            .join('') + limpiarTodo
 }
 
 function aplicarFiltros() {
@@ -323,8 +329,6 @@ formulario.addEventListener('click', (evento) => {
     }
 })
 
-botonLimpiar.addEventListener('click', limpiarFiltros)
-
 buscador.addEventListener('input', reiniciarYAplicar)
 
 formularioBuscador.addEventListener('submit', (evento) => {
@@ -334,7 +338,13 @@ formularioBuscador.addEventListener('submit', (evento) => {
 aplicados.addEventListener('click', (evento) => {
     const boton = evento.target.closest('button')
 
-    if (boton) {
+    if (!boton) {
+        return
+    }
+
+    if (boton.dataset.limpiarTodo !== undefined) {
+        limpiarFiltros()
+    } else {
         quitarFiltro(boton)
     }
 })

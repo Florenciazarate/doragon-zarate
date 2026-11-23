@@ -851,12 +851,15 @@
   }
 }
 
-/* Titulo de filtros con el boton Limpiar a la derecha */
-.pagina-catalogo .encabezado-filtros {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--espacio-1);
+/* "Limpiar todo" al final de los filtros aplicados */
+.pagina-catalogo .aplicados .limpiar-todo {
+  padding: 0.25rem 0.25rem;
+  border: 0;
+  background: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primario-oscuro);
+  cursor: pointer;
 }
 
 /* Botones de precio: sin la linea separadora de los formularios */
