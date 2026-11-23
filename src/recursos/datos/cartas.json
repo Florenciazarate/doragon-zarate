@@ -5,7 +5,7 @@
     "coleccion": "saiyan",
     "rareza": 5,
     "numero": 14,
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-5.svg"
   },
   {
     "id": "vegeta",
@@ -13,7 +13,7 @@
     "coleccion": "saiyan",
     "rareza": 4,
     "numero": 52,
-    "imagen": "./recursos/imagenes/cartas/vegeta.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-4.svg"
   },
   {
     "id": "nappa",
@@ -21,7 +21,7 @@
     "coleccion": "saiyan",
     "rareza": 3,
     "numero": 71,
-    "imagen": "./recursos/imagenes/cartas/gohan.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-3.svg"
   },
   {
     "id": "yamcha",
@@ -29,7 +29,7 @@
     "coleccion": "saiyan",
     "rareza": 3,
     "numero": 74,
-    "imagen": "./recursos/imagenes/cartas/gohan.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-3.svg"
   },
   {
     "id": "raditz",
@@ -37,7 +37,7 @@
     "coleccion": "saiyan",
     "rareza": 2,
     "numero": 95,
-    "imagen": "./recursos/imagenes/cartas/krilin.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-2.svg"
   },
   {
     "id": "chaoz",
@@ -45,7 +45,7 @@
     "coleccion": "saiyan",
     "rareza": 2,
     "numero": 99,
-    "imagen": "./recursos/imagenes/cartas/krilin.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-2.svg"
   },
   {
     "id": "porunga",
@@ -53,7 +53,7 @@
     "coleccion": "namek",
     "rareza": 5,
     "numero": 7,
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-namek-5.svg"
   },
   {
     "id": "nail",
@@ -61,7 +61,7 @@
     "coleccion": "namek",
     "rareza": 4,
     "numero": 33,
-    "imagen": "./recursos/imagenes/cartas/vegeta.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-namek-4.svg"
   },
   {
     "id": "piccolo",
@@ -69,7 +69,7 @@
     "coleccion": "namek",
     "rareza": 3,
     "numero": 58,
-    "imagen": "./recursos/imagenes/cartas/piccolo.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-namek-3.svg"
   },
   {
     "id": "moori",
@@ -77,7 +77,7 @@
     "coleccion": "namek",
     "rareza": 3,
     "numero": 62,
-    "imagen": "./recursos/imagenes/cartas/piccolo.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-namek-3.svg"
   },
   {
     "id": "dende",
@@ -85,7 +85,7 @@
     "coleccion": "namek",
     "rareza": 2,
     "numero": 81,
-    "imagen": "./recursos/imagenes/cartas/krilin.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-namek-2.svg"
   },
   {
     "id": "guerrero-namek",
@@ -93,7 +93,7 @@
     "coleccion": "namek",
     "rareza": 2,
     "numero": 86,
-    "imagen": "./recursos/imagenes/cartas/krilin.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-namek-2.svg"
   },
   {
     "id": "cell-perfecto",
@@ -101,7 +101,7 @@
     "coleccion": "cell",
     "rareza": 5,
     "numero": 3,
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-cell-5.svg"
   },
   {
     "id": "trunks",
@@ -109,7 +109,7 @@
     "coleccion": "cell",
     "rareza": 4,
     "numero": 27,
-    "imagen": "./recursos/imagenes/cartas/vegeta.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-cell-4.svg"
   },
   {
     "id": "gohan",
@@ -117,7 +117,7 @@
     "coleccion": "cell",
     "rareza": 3,
     "numero": 44,
-    "imagen": "./recursos/imagenes/cartas/gohan.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-cell-3.svg"
   },
   {
     "id": "androide-17",
@@ -125,7 +125,7 @@
     "coleccion": "cell",
     "rareza": 3,
     "numero": 47,
-    "imagen": "./recursos/imagenes/cartas/gohan.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-cell-3.svg"
   },
   {
     "id": "krilin",
@@ -133,7 +133,7 @@
     "coleccion": "cell",
     "rareza": 2,
     "numero": 52,
-    "imagen": "./recursos/imagenes/cartas/krilin.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-cell-2.svg"
   },
   {
     "id": "tenshinhan",
@@ -141,7 +141,7 @@
     "coleccion": "cell",
     "rareza": 2,
     "numero": 56,
-    "imagen": "./recursos/imagenes/cartas/krilin.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-cell-2.svg"
   },
   {
     "id": "ginyu",
@@ -149,7 +149,7 @@
     "coleccion": "fuerzas-especiales",
     "rareza": 5,
     "numero": 2,
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-fuerzas-especiales-5.svg"
   },
   {
     "id": "freezer",
@@ -157,7 +157,7 @@
     "coleccion": "fuerzas-especiales",
     "rareza": 4,
     "numero": 19,
-    "imagen": "./recursos/imagenes/cartas/vegeta.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-fuerzas-especiales-4.svg"
   },
   {
     "id": "recoome",
@@ -165,7 +165,7 @@
     "coleccion": "fuerzas-especiales",
     "rareza": 3,
     "numero": 40,
-    "imagen": "./recursos/imagenes/cartas/gohan.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-fuerzas-especiales-3.svg"
   },
   {
     "id": "jeice",
@@ -173,7 +173,7 @@
     "coleccion": "fuerzas-especiales",
     "rareza": 3,
     "numero": 43,
-    "imagen": "./recursos/imagenes/cartas/gohan.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-fuerzas-especiales-3.svg"
   },
   {
     "id": "burter",
@@ -181,7 +181,7 @@
     "coleccion": "fuerzas-especiales",
     "rareza": 2,
     "numero": 66,
-    "imagen": "./recursos/imagenes/cartas/krilin.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-fuerzas-especiales-2.svg"
   },
   {
     "id": "guldo",
@@ -189,7 +189,7 @@
     "coleccion": "fuerzas-especiales",
     "rareza": 2,
     "numero": 70,
-    "imagen": "./recursos/imagenes/cartas/krilin.svg"
+    "imagen": "./recursos/imagenes/cartas/carta-fuerzas-especiales-2.svg"
   },
   {
     "id": "goku-ssj",
@@ -197,7 +197,7 @@
     "coleccion": "saiyan",
     "rareza": 5,
     "numero": 101,
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-5.svg",
     "soloTienda": true
   },
   {
@@ -206,7 +206,7 @@
     "coleccion": "saiyan",
     "rareza": 5,
     "numero": 102,
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-5.svg",
     "soloTienda": true
   },
   {
@@ -215,7 +215,7 @@
     "coleccion": "cell",
     "rareza": 5,
     "numero": 58,
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-cell-5.svg",
     "soloTienda": true
   }
 ]

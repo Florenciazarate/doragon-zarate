@@ -401,6 +401,11 @@
 .pagina-cuenta .perfil .salir {
   font-size: 0.875rem;
   font-weight: 600;
+  color: var(--color-rojo);
+}
+
+.pagina-cuenta .perfil .nombre {
+  font-size: 0.875rem;
 }
 
 .pagina-cuenta .secciones {

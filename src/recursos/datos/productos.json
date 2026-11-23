@@ -52,7 +52,7 @@
     "stock": 3,
     "detalle": "Carta suelta · 5★ · sin azar",
     "descripcion": "Carta holográfica de Son Goku Super Saiyan. Se compra directo, sin abrir sobres.",
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-5.svg",
     "fondo": "amarillo",
     "destacado": false
   },
@@ -67,7 +67,7 @@
     "stock": 15,
     "detalle": "Carta suelta · 4★ · sin azar",
     "descripcion": "Vegeta, el príncipe de los Saiyan, en una carta épica de acabado naranja.",
-    "imagen": "./recursos/imagenes/cartas/vegeta.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-4.svg",
     "fondo": "",
     "destacado": false
   },
@@ -82,7 +82,7 @@
     "stock": 22,
     "detalle": "Carta suelta · 3★ · sin azar",
     "descripcion": "Nappa, mano derecha de Vegeta, en una carta rara de la primera serie.",
-    "imagen": "./recursos/imagenes/cartas/gohan.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-3.svg",
     "fondo": "amarillo",
     "destacado": false
   },
@@ -97,7 +97,7 @@
     "stock": 2,
     "detalle": "Exclusiva · 5★ · numerada",
     "descripcion": "Edición exclusiva y numerada de Son Goku con Kaio-ken x20. Solo se vende de forma directa.",
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-5.svg",
     "fondo": "amarillo",
     "destacado": false
   },
@@ -112,7 +112,7 @@
     "stock": 5,
     "detalle": "Exclusiva · 5★ · numerada",
     "descripcion": "Trunks del Futuro en edición exclusiva, con numeración limitada.",
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-saiyan-5.svg",
     "fondo": "amarillo",
     "destacado": false
   },
@@ -155,7 +155,7 @@
     "stock": 25,
     "detalle": "Carta suelta · 3★ · sin azar",
     "descripcion": "Piccolo en una carta rara de la colección Namek.",
-    "imagen": "./recursos/imagenes/cartas/piccolo.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-namek-3.svg",
     "fondo": "azul",
     "destacado": false
   },
@@ -170,7 +170,7 @@
     "stock": 9,
     "detalle": "Carta suelta · 4★ · sin azar",
     "descripcion": "Nail, el guerrero más fuerte de Namek, en una carta épica.",
-    "imagen": "./recursos/imagenes/cartas/vegeta.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-namek-4.svg",
     "fondo": "azul",
     "destacado": false
   },
@@ -185,7 +185,7 @@
     "stock": 50,
     "detalle": "Carta suelta · 2★ · sin azar",
     "descripcion": "Dende, el joven sanador, en una carta común.",
-    "imagen": "./recursos/imagenes/cartas/krilin.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-namek-2.svg",
     "fondo": "azul",
     "destacado": false
   },
@@ -200,7 +200,7 @@
     "stock": 4,
     "detalle": "Exclusiva · 5★ · numerada",
     "descripcion": "Porunga, el dragón de Namek, en edición exclusiva numerada.",
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-namek-5.svg",
     "fondo": "azul",
     "destacado": false
   },
@@ -243,7 +243,7 @@
     "stock": 12,
     "detalle": "Carta suelta · 3★ · sin azar",
     "descripcion": "Gohan frente a Cell, en una carta rara de acabado dorado.",
-    "imagen": "./recursos/imagenes/cartas/gohan.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-cell-3.svg",
     "fondo": "verde",
     "destacado": false
   },
@@ -258,7 +258,7 @@
     "stock": 40,
     "detalle": "Carta suelta · 2★ · sin azar",
     "descripcion": "Krilin en el torneo, en una carta común de acabado azul.",
-    "imagen": "./recursos/imagenes/cartas/krilin.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-cell-2.svg",
     "fondo": "verde",
     "destacado": false
   },
@@ -273,7 +273,7 @@
     "stock": 1,
     "detalle": "Exclusiva · 5★ · numerada",
     "descripcion": "Gohan Bestia en edición exclusiva. Queda una sola unidad.",
-    "imagen": "./recursos/imagenes/cartas/son-goku-kaioken.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-cell-5.svg",
     "fondo": "verde",
     "destacado": false
   },
@@ -316,7 +316,7 @@
     "stock": 10,
     "detalle": "Carta suelta · 4★ · sin azar",
     "descripcion": "El Capitán Ginyu y sus poses, en una carta épica.",
-    "imagen": "./recursos/imagenes/cartas/vegeta.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-fuerzas-especiales-4.svg",
     "fondo": "",
     "destacado": false
   },
@@ -331,7 +331,7 @@
     "stock": 18,
     "detalle": "Carta suelta · 3★ · sin azar",
     "descripcion": "Recoome, el más fuerte del escuadrón, en una carta rara.",
-    "imagen": "./recursos/imagenes/cartas/gohan.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-fuerzas-especiales-3.svg",
     "fondo": "",
     "destacado": false
   },
@@ -346,7 +346,7 @@
     "stock": 0,
     "detalle": "Carta suelta · 4★ · sin azar",
     "descripcion": "Freezer en su forma final. Agotada por el momento.",
-    "imagen": "./recursos/imagenes/cartas/vegeta.svg",
+    "imagen": "./recursos/imagenes/cartas/carta-fuerzas-especiales-4.svg",
     "fondo": "",
     "destacado": false
   }

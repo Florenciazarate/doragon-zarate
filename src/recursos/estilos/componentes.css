@@ -177,15 +177,8 @@
 
 .tarjeta-carta img {
   width: 100%;
-  border: 1px solid var(--color-borde);
-  border-radius: var(--radio-medio);
-  background-color: var(--color-campo);
-  aspect-ratio: 292 / 210;
-  object-fit: cover;
-}
-
-.tarjeta-carta.vertical img {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 7 / 10; /* proporcion de las cartas (350 x 500): se ven enteras, sin recortes */
+  object-fit: contain;
 }
 
 .tarjeta-carta .nombre {
@@ -552,7 +545,7 @@ dialog.panel-carrito::backdrop {
   border-radius: var(--radio-chico);
   background-color: #e7f4ec;
   font-weight: 600;
-  color: var(--color-verde);
+  color: #2d6643; /* verde mas oscuro: 6:1 sobre el fondo del aviso */
 }
 
 .panel-carrito .lista {

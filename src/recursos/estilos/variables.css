@@ -1,11 +1,12 @@
 :root {
   --color-tinta: #1b1b2e;
   --color-texto: #62606e;
-  --color-suave: #9a94a3;
+  --color-suave: #6e6978; /* placeholders: 4,98:1 sobre --color-campo */
   --color-fondo: #fdf7e3;
   --color-campo: #fff8dc;
   --color-blanco: #ffffff;
   --color-borde: #e8dfd3;
+  --color-borde-campo: #857a6a; /* borde de inputs: 3,95:1 sobre --color-campo (minimo 3:1) */
   --color-pista: #f0e7da;
 
   --color-primario: #f4791f;
