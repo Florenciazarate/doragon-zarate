@@ -29,21 +29,29 @@ function vaciarCarrito() {
     localStorage.removeItem(CLAVE_CODIGO)
 }
 
-function agregarProducto(id, cantidad) {
+// Suma unidades sin pasarse del stock. Devuelve cuantas se sumaron de verdad
+function agregarProducto(id, cantidad, stock) {
     const productosEnCarro = leerCarrito()
     const productoEnCarro = productosEnCarro.find((item) => {
         return item.id === id
     })
 
+    const yaEnCarro = productoEnCarro ? productoEnCarro.cantidad : 0
+    const sumadas = Math.min(cantidad, stock - yaEnCarro) //<- lo que queda disponible
+
+    if (sumadas <= 0) {
+        return 0 //<- ya esta todo el stock en el carro
+    }
+
     // Si ya estaba sumamos la cantidad, si no lo agregamos
     if (productoEnCarro) {
-        productoEnCarro.cantidad += cantidad
+        productoEnCarro.cantidad += sumadas
     } else {
-        productosEnCarro.push({ id: id, cantidad: cantidad })
+        productosEnCarro.push({ id: id, cantidad: sumadas })
     }
 
     guardarCarrito(productosEnCarro)
-    return productosEnCarro
+    return sumadas
 }
 
 function contarUnidades(productosEnCarro) {

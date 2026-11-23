@@ -1,6 +1,6 @@
 import { formatoPrecio } from '../utilidades/formato.js'
 import { fijarContador } from '../utilidades/contador.js'
-import { agregarProducto, contarUnidades } from '../utilidades/carrito.js'
+import { agregarProducto, contarUnidades, leerCarrito } from '../utilidades/carrito.js'
 
 // Referenciamos elementos del html
 const ventana = document.getElementById('detalle')
@@ -93,13 +93,24 @@ function cambiarCantidad(nueva) {
 }
 
 function agregarAlCarrito() {
-    const items = agregarProducto(producto.id, cantidad)
-    fijarContador(contarUnidades(items))
-    ventana.querySelector('.mensaje').textContent = `Agregaste ${cantidad} × ${producto.nombre} al carrito.`
+    const sumadas = agregarProducto(producto.id, cantidad, producto.stock)
+    fijarContador(contarUnidades(leerCarrito()))
+    ventana.querySelector('.mensaje').textContent = crearMensaje(sumadas)
+}
+
+// Mensaje segun cuantas unidades se pudieron sumar
+function crearMensaje(sumadas) {
+    if (sumadas === 0) {
+        return `Ya tenés en el carrito todo el stock disponible de ${producto.nombre}.`
+    }
+    if (sumadas < cantidad) {
+        return `Solo quedaban ${sumadas} disponibles: agregamos ${sumadas} × ${producto.nombre} al carrito.`
+    }
+    return `Agregaste ${cantidad} × ${producto.nombre} al carrito.`
 }
 
 function comprarAhora() {
-    agregarProducto(producto.id, cantidad)
+    agregarProducto(producto.id, cantidad, producto.stock) //<- si no hay mas stock igual vamos al carrito
     window.location.href = 'carrito.html'
 }
 

@@ -1,4 +1,4 @@
-import { CLAVE_SOBRES, CLAVE_INVENTARIO } from '../config.js'
+import { CLAVE_SOBRES, CLAVE_INVENTARIO, CLAVE_ABIERTOS } from '../config.js'
 
 // Persistencia-------
 // Sobres comprados que todavia no se abrieron: [{ id, cantidad }]
@@ -63,6 +63,15 @@ function usarSobre(id) {
     return sobres
 }
 
+// Contador de sobres abiertos
+function leerSobresAbiertos() {
+    return Number(localStorage.getItem(CLAVE_ABIERTOS)) || 0 //<- si no hay nada guardado, 0
+}
+
+function sumarSobreAbierto() {
+    localStorage.setItem(CLAVE_ABIERTOS, leerSobresAbiertos() + 1)
+}
+
 // Inventario-------
 // La primera vez arranca con el inventario del JSON (cartas que ya tenia la cuenta)
 function leerInventario(inventarioInicial) {
@@ -78,4 +87,12 @@ function agregarAlInventario(inventario, cartasNuevas) {
     localStorage.setItem(CLAVE_INVENTARIO, JSON.stringify(inventario))
 }
 
-export { leerSobres, agregarSobres, usarSobre, leerInventario, agregarAlInventario }
+export {
+    leerSobres,
+    agregarSobres,
+    usarSobre,
+    leerSobresAbiertos,
+    sumarSobreAbierto,
+    leerInventario,
+    agregarAlInventario
+}

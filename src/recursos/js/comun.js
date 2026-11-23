@@ -1,17 +1,33 @@
 import { fijarContador } from './utilidades/contador.js'
 import { leerCarrito, agregarProducto, contarUnidades } from './utilidades/carrito.js'
 import { filtrarEntrada, validarCampo, validarFormulario, limpiarErrores } from './utilidades/validaciones.js'
+import { abrirPanel } from './componentes/panelCarrito.js'
 
 // Contador del carrito con lo guardado en localStorage
 fijarContador(contarUnidades(leerCarrito()))
 
-// Botones "Comprar" de las tarjetas: agregan una unidad y siguen al carrito
+// Botones "Agregar" de las tarjetas: suman una unidad y abren el panel del carrito
 // Escuchamos en document porque las tarjetas se crean despues con JS
 document.addEventListener('click', (evento) => {
-    const enlace = evento.target.closest('[data-comprar]')
+    const boton = evento.target.closest('[data-agregar]')
 
-    if (enlace) {
-        agregarProducto(enlace.dataset.comprar, 1)
+    if (!boton) {
+        return
+    }
+
+    const sumadas = agregarProducto(boton.dataset.agregar, 1, Number(boton.dataset.stock))
+    fijarContador(contarUnidades(leerCarrito()))
+    abrirPanel({ nombre: boton.dataset.nombre, sinStock: sumadas === 0 })
+})
+
+// Icono del carrito: abre el panel en vez de cambiar de pagina
+// (en la pagina del carrito no hace falta, ya estamos ahi)
+const iconoCarrito = document.querySelector('.cabecera .icono.carrito')
+
+iconoCarrito.addEventListener('click', (evento) => {
+    if (!window.location.pathname.endsWith('carrito.html')) {
+        evento.preventDefault()
+        abrirPanel(null)
     }
 })
 

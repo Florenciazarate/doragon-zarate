@@ -5,8 +5,8 @@ function crearAccion(producto) {
         return `<a class="boton tenue chico" href="nosotros.html#contacto">Avisame</a>`
     }
 
-    // data-comprar -> lo usa comun.js para agregar al carro
-    return `<a class="boton primario chico" href="carrito.html" data-comprar="${producto.id}">Comprar</a>`
+    // data-agregar -> lo usa comun.js para sumar al carro sin salir de la pagina
+    return `<button class="boton primario chico" type="button" data-agregar="${producto.id}" data-nombre="${producto.nombre}" data-stock="${producto.stock}">Agregar</button>`
 }
 
 function crearTarjeta(producto, conDetalle) {

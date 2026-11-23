@@ -65,29 +65,17 @@
     <div class="resumen">
       <section class="tarjeta" aria-labelledby="progreso-titulo">
         <h2 id="progreso-titulo">Progreso de colección</h2>
-        <dl class="progreso">
-          <div>
-            <dt>Saiyan</dt>
-            <dd><progress class="barra" value="63" max="120">63 de 120</progress> 63/120</dd>
-          </div>
-          <div>
-            <dt>Namek</dt>
-            <dd><progress class="barra azul" value="18" max="90">18 de 90</progress> 18/90</dd>
-          </div>
-          <div>
-            <dt>Torneo de Cell</dt>
-            <dd><progress class="barra verde" value="41" max="60">41 de 60</progress> 41/60</dd>
-          </div>
-        </dl>
+        <dl class="progreso" id="progreso-coleccion"></dl>
       </section>
 
       <section class="tarjeta" aria-labelledby="duplicadas-titulo">
         <h2 id="duplicadas-titulo">Duplicadas para canje</h2>
-        <p class="subtitulo">17 cartas duplicadas en tu inventario. No tienen reembolso del 100%, pero podés canjearlas por crédito parcial.</p>
+        <p class="subtitulo" id="duplicadas-resumen">No tienen reembolso del 100%, pero podés canjearlas por crédito parcial.</p>
         <p class="acciones">
           <button class="boton azul" type="button">Canjear duplicadas</button>
-          <button class="boton secundario" type="button">Compartir resultado</button>
+          <button class="boton secundario" type="button" id="compartir">Compartir resultado</button>
         </p>
+        <p class="mensaje" id="mensaje-compartir" role="status"></p>
       </section>
     </div>
 

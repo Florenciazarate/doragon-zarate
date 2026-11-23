@@ -1,7 +1,9 @@
 import { URL_CARTAS, URL_INVENTARIO, URL_CATEGORIAS } from '../config.js'
 import obtenerDatos, { mostrarError } from '../datos.js'
 import { numeroCarta } from '../utilidades/formato.js'
-import { leerInventario } from '../utilidades/coleccion.js'
+import { leerInventario, leerSobresAbiertos } from '../utilidades/coleccion.js'
+import { calcularEstadisticas, calcularProgreso } from '../utilidades/estadisticas.js'
+import { crearProgreso } from '../componentes/progreso.js'
 
 let cartas = []
 let colecciones = []
@@ -10,6 +12,25 @@ let colecciones = []
 const filtro = document.getElementById('filtro-inventario')
 const lista = document.getElementById('lista-inventario')
 const vacio = document.getElementById('inventario-vacio')
+const progresoColeccion = document.getElementById('progreso-coleccion')
+const tiradasResumen = document.getElementById('tiradas-resumen')
+
+// Estadisticas calculadas con el inventario real
+function renderizarEstadisticas(inventario) {
+    const estadisticas = calcularEstadisticas(inventario, cartas)
+    const abiertos = leerSobresAbiertos()
+
+    document.getElementById('stat-total').textContent = estadisticas.total
+    document.getElementById('stat-cinco').textContent = estadisticas.cincoEstrellas
+    document.getElementById('stat-abiertos').textContent = abiertos
+    document.getElementById('stat-duplicadas').textContent = estadisticas.duplicadas
+
+    progresoColeccion.innerHTML = crearProgreso(calcularProgreso(inventario, cartas, colecciones))
+
+    if (abiertos > 0) {
+        tiradasResumen.textContent = `${abiertos === 1 ? '1 sobre abierto' : abiertos + ' sobres abiertos'} hasta ahora. Abrí uno nuevo cuando quieras.`
+    }
+}
 
 function crearCarta(item) {
     const carta = cartas.find((registro) => registro.id === item.id)
@@ -61,6 +82,7 @@ try {
 
     lista.innerHTML = inventario.map(crearCarta).join('')
     mostrarCartas()
+    renderizarEstadisticas(inventario)
 } catch (error) {
     console.error(error)
     mostrarError(lista, 'No pudimos cargar tu inventario.')

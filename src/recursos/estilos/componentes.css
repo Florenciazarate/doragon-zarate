@@ -500,3 +500,111 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* Panel lateral del carrito */
+dialog.panel-carrito {
+  width: min(24rem, 100%);
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0 0 0 auto; /* pegado a la derecha */
+  padding: var(--espacio-3);
+  border: 0;
+  background-color: var(--color-blanco);
+  color: var(--color-tinta);
+}
+
+dialog.panel-carrito[open] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+dialog.panel-carrito::backdrop {
+  background-color: rgba(27, 27, 46, 0.45);
+}
+
+.panel-carrito .encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-carrito .encabezado h2 {
+  font-size: 1.25rem;
+}
+
+.panel-carrito .cerrar {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-chico);
+  background-color: var(--color-campo);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.panel-carrito .agregado {
+  padding: 0.75rem var(--espacio-2);
+  border-radius: var(--radio-chico);
+  background-color: #e7f4ec;
+  font-weight: 600;
+  color: var(--color-verde);
+}
+
+.panel-carrito .lista {
+  display: grid;
+  gap: var(--espacio-2);
+  overflow-y: auto; /* si hay muchos productos, la lista hace scroll */
+}
+
+.panel-carrito .lista li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--espacio-2);
+  align-items: center;
+  padding-bottom: var(--espacio-2);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.panel-carrito .nombre {
+  font-weight: 600;
+}
+
+.panel-carrito .detalle {
+  font-size: 0.8125rem;
+  color: var(--color-texto);
+}
+
+.panel-carrito .precio {
+  font-weight: 700;
+}
+
+.panel-carrito .subtotal {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  font-size: 1.0625rem;
+}
+
+.panel-carrito .acciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-1);
+}
+
+.panel-carrito .vacio + .acciones {
+  margin-top: auto;
+}
+
+.panel-carrito .agregado.sin-stock {
+  background-color: #fdecea;
+  color: var(--color-rojo);
+}
+
+.barra.rojo {
+  --color-barra: var(--color-rojo);
+}

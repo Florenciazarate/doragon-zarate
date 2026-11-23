@@ -2,13 +2,25 @@ import { URL_PRODUCTOS, URL_PROBABILIDADES, URL_CARTAS, URL_INVENTARIO, URL_CATE
 import obtenerDatos, { mostrarError } from '../datos.js'
 import { sortearRareza, elegirAlAzar } from '../utilidades/sorteo.js'
 import { numeroCarta } from '../utilidades/formato.js'
-import { leerSobres, usarSobre, leerInventario, agregarAlInventario } from '../utilidades/coleccion.js'
+import {
+    leerSobres,
+    usarSobre,
+    sumarSobreAbierto,
+    leerInventario,
+    agregarAlInventario
+} from '../utilidades/coleccion.js'
+import { calcularEstadisticas, calcularProgreso } from '../utilidades/estadisticas.js'
+import { crearProgreso } from '../componentes/progreso.js'
 
 const cartasPorSobre = 5
 
 // Referenciamos elementos del html
 const apertura = document.getElementById('apertura')
 const resultado = document.getElementById('resultado')
+const botonCompartir = document.getElementById('compartir')
+const mensajeCompartir = document.getElementById('mensaje-compartir')
+const progresoColeccion = document.getElementById('progreso-coleccion')
+const duplicadasResumen = document.getElementById('duplicadas-resumen')
 
 // Datos de los JSON (se cargan al final con fetch)
 let productos = []
@@ -22,6 +34,9 @@ let nombresRareza = {}
 let sobre = null
 let tabla = []
 
+// Mejor carta de la ultima tirada (para compartir)
+let ultimaDestacada = null
+
 function cantidadEnInventario(id) {
     const item = inventario.find((registro) => registro.id === id)
     return item ? item.cantidad : 0
@@ -31,6 +46,16 @@ function buscarProducto(id) {
     return productos.find((producto) => {
         return producto.id === id
     })
+}
+
+// Resumen de coleccion (progreso y duplicadas) con el inventario real
+function renderizarResumen() {
+    const estadisticas = calcularEstadisticas(inventario, cartas)
+    const cantidad =
+        estadisticas.duplicadas === 1 ? '1 carta duplicada' : estadisticas.duplicadas + ' cartas duplicadas'
+
+    progresoColeccion.innerHTML = crearProgreso(calcularProgreso(inventario, cartas, colecciones))
+    duplicadasResumen.textContent = `${cantidad} en tu inventario. No tienen reembolso del 100%, pero podés canjearlas por crédito parcial.`
 }
 
 // Apertura-------
@@ -199,6 +224,7 @@ function mostrarResultado(id) {
     const obtenidas = abrirSobre()
     const destacada = elegirPrincipal(obtenidas)
     const resto = obtenidas.filter((item) => item !== destacada)
+    ultimaDestacada = destacada.carta
     const numeroPedido = 'DR-' + Math.floor(10000 + Math.random() * 90000)
 
     resultado.innerHTML = `
@@ -218,12 +244,36 @@ function mostrarResultado(id) {
         })
     )
 
+    sumarSobreAbierto()
+    renderizarResumen()
+
     apertura.hidden = true
     resultado.hidden = false
     resultado.querySelector('#reveal-titulo').focus()
 }
 
+// Compartir-------
+// Copiamos al portapapeles un texto con la mejor carta de la ultima tirada
+async function compartirResultado() {
+    if (ultimaDestacada === null) {
+        mensajeCompartir.textContent = 'Primero abrí un sobre para tener un resultado que compartir.'
+        return
+    }
+
+    const texto = `¡Saqué a ${ultimaDestacada.nombre} (${ultimaDestacada.rareza}★) abriendo un ${sobre.nombre} en Doragon!`
+
+    try {
+        await navigator.clipboard.writeText(texto) //<- devuelve una promesa
+        mensajeCompartir.textContent = 'Copiamos tu resultado. Pegalo donde quieras compartirlo.'
+    } catch (error) {
+        console.error(error)
+        mensajeCompartir.textContent = 'No pudimos copiar el resultado. ' + texto
+    }
+}
+
 // Eventos
+botonCompartir.addEventListener('click', compartirResultado)
+
 apertura.addEventListener('click', (evento) => {
     const boton = evento.target.closest('[data-abrir]')
 
@@ -257,6 +307,7 @@ try {
 
     // Renderizamos
     renderizarApertura()
+    renderizarResumen()
 } catch (error) {
     console.error(error)
     mostrarError(apertura, 'No pudimos preparar la apertura de sobres.')

@@ -61,11 +61,11 @@
 
       <div class="lateral">
         <section class="perfil tarjeta" aria-labelledby="perfil-titulo">
-          <span class="avatar" aria-hidden="true">N</span>
+          <span class="avatar" aria-hidden="true">F</span>
           <div>
-            <h2 id="perfil-titulo">Hola, Nahuel</h2>
-            <p>Nahuel Ferreyra</p>
-            <p class="correo">nahuel@mail.com</p>
+            <h2 id="perfil-titulo">Hola, Florencia</h2>
+            <p>Florencia Zárate</p>
+            <p class="correo">florencia@mail.com</p>
           </div>
           <p class="etiqueta nivel">Coleccionista nivel 4</p>
           <p class="salir"><a href="index.html">Cerrar sesión</a></p>
@@ -82,20 +82,7 @@
 
         <section class="tarjeta" aria-labelledby="progreso-titulo">
           <h2 id="progreso-titulo">Progreso de colección</h2>
-          <dl class="progreso">
-            <div>
-              <dt>Saiyan</dt>
-              <dd><progress class="barra" value="63" max="120">63 de 120</progress> 63/120</dd>
-            </div>
-            <div>
-              <dt>Namek</dt>
-              <dd><progress class="barra azul" value="18" max="90">18 de 90</progress> 18/90</dd>
-            </div>
-            <div>
-              <dt>Torneo de Cell</dt>
-              <dd><progress class="barra verde" value="41" max="60">41 de 60</progress> 41/60</dd>
-            </div>
-          </dl>
+          <dl class="progreso" id="progreso-coleccion"></dl>
         </section>
       </div>
 
@@ -106,19 +93,19 @@
           <dl class="estadisticas">
             <div class="item">
               <dt>Cartas totales</dt>
-              <dd>122</dd>
+              <dd id="stat-total">0</dd>
             </div>
             <div class="item">
               <dt>Cartas 5★</dt>
-              <dd>6</dd>
+              <dd id="stat-cinco">0</dd>
             </div>
             <div class="item">
               <dt>Sobres abiertos</dt>
-              <dd>34</dd>
+              <dd id="stat-abiertos">0</dd>
             </div>
             <div class="item">
               <dt>Duplicadas</dt>
-              <dd>17</dd>
+              <dd id="stat-duplicadas">0</dd>
             </div>
           </dl>
         </section>
@@ -174,7 +161,7 @@
 
         <section class="tiradas tarjeta" id="tiradas" aria-labelledby="tiradas-titulo">
           <h2 id="tiradas-titulo">Tiradas</h2>
-          <p class="subtitulo">34 sobres abiertos hasta ahora. Volvé a ver el detalle de tu última apertura o abrí uno nuevo.</p>
+          <p class="subtitulo" id="tiradas-resumen">Todavía no abriste sobres.</p>
           <p class="acciones">
             <a class="boton primario" href="tirada.html">Abrir un sobre</a>
             <a class="boton secundario" href="tirada.html">Ver última tirada</a>
