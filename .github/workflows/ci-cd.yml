@@ -21,6 +21,7 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
+          package-manager-cache: false #<- no usamos cache de dependencias (los tests no instalan nada)
 
       - name: Ejecutar los tests (node --test)
         run: npm test
@@ -41,6 +42,7 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
+          package-manager-cache: false #<- no usamos cache de dependencias (los tests no instalan nada)
 
       - name: Instalar la herramienta de Vercel
         run: npm install --global vercel@latest
