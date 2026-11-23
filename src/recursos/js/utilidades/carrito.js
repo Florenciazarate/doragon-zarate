@@ -54,6 +54,23 @@ function agregarProducto(id, cantidad, stock) {
     return sumadas
 }
 
+// Cambia la cantidad de un producto (si llega a 0, se saca del carro)
+function cambiarCantidad(id, cantidad) {
+    const productosEnCarro = leerCarrito()
+        .map((item) => {
+            if (item.id === id) {
+                return { id: item.id, cantidad: cantidad }
+            }
+            return item
+        })
+        .filter((item) => {
+            return item.cantidad > 0
+        })
+
+    guardarCarrito(productosEnCarro)
+    return productosEnCarro
+}
+
 function contarUnidades(productosEnCarro) {
     let unidades = 0
 
@@ -100,6 +117,7 @@ export {
     guardarCarrito,
     vaciarCarrito,
     agregarProducto,
+    cambiarCantidad,
     contarUnidades,
     leerCodigo,
     guardarCodigo,

@@ -33,7 +33,7 @@
 
 .tarjeta-sobre h3 .detalle-abrir:hover {
   color: var(--color-primario-oscuro);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 dialog.ventana {

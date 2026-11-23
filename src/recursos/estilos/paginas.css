@@ -76,7 +76,17 @@
 }
 
 .pagina-inicio .tiradas .destacada .enlace {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
   font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.pagina-inicio .tiradas .destacada .enlace:hover {
   text-decoration: none;
 }
 
@@ -839,4 +849,23 @@
     border-radius: var(--radio-chico);
     background-color: transparent;
   }
+}
+
+/* Titulo de filtros con el boton Limpiar a la derecha */
+.pagina-catalogo .encabezado-filtros {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-1);
+}
+
+/* Botones de precio: sin la linea separadora de los formularios */
+.pagina-catalogo .filtros .grupo .acciones {
+  justify-content: flex-start;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.pagina-catalogo .aplicados:empty {
+  display: none;
 }

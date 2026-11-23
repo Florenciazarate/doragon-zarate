@@ -15,6 +15,9 @@ let rarezas = []
 let probabilidades = {}
 let precioMaximo = 0
 
+// Precio que se aplico con el boton "Aplicar" (no se filtra mientras se escribe)
+let precioAplicado = { minimo: 0, maximo: 0 }
+
 // Referenciamos elementos del html
 const formulario = document.getElementById('filtros')
 const lista = document.getElementById('lista-productos')
@@ -22,6 +25,7 @@ const aplicados = document.getElementById('aplicados')
 const total = document.getElementById('total')
 const vacio = document.getElementById('vacio')
 const botonMas = document.getElementById('cargar-mas')
+const botonLimpiar = document.getElementById('limpiar')
 const buscador = document.querySelector('.cabecera .buscador input')
 const formularioBuscador = document.querySelector('.cabecera .buscador')
 
@@ -82,6 +86,11 @@ function crearFiltros() {
           <input type="number" id="precio-max" name="precio_max" min="0" max="${precioMaximo}" step="100" value="${precioMaximo}">
         </div>
       </div>
+      <p class="error-campo" id="error-precio" role="alert"></p>
+      <div class="acciones">
+        <button class="boton primario chico" type="submit">Aplicar</button>
+        <button class="boton secundario chico" type="button" id="limpiar-precio">Limpiar</button>
+      </div>
     </fieldset>
 
     <fieldset class="grupo">
@@ -100,10 +109,7 @@ function crearFiltros() {
         <option value="precio-desc">Precio: mayor a menor</option>
       </select>
     </div>
-
-    <div class="acciones">
-      <button class="boton secundario chico" type="button" id="limpiar">Limpiar</button>
-    </div>`
+`
 }
 
 function crearListado() {
@@ -115,14 +121,13 @@ function crearListado() {
 
 function leerFiltros() {
     const datos = new FormData(formulario)
-    const maximo = datos.get('precio_max')
 
     return {
         tipo: datos.get('tipo'),
         colecciones: datos.getAll('coleccion'),
         rarezas: datos.getAll('rareza'),
-        minimo: Number(datos.get('precio_min')) || 0,
-        maximo: maximo === '' ? precioMaximo : Number(maximo),
+        minimo: precioAplicado.minimo,
+        maximo: precioAplicado.maximo,
         soloStock: datos.get('stock') === '1',
         orden: datos.get('orden'),
         texto: normalizar(buscador.value.trim())
@@ -250,8 +255,32 @@ function reiniciarYAplicar() {
     aplicarFiltros()
 }
 
+// Precio-------
+function aplicarPrecio() {
+    const minimo = Number(formulario.precio_min.value) || 0
+    const maximo = formulario.precio_max.value === '' ? precioMaximo : Number(formulario.precio_max.value)
+    const error = document.getElementById('error-precio')
+
+    if (minimo > maximo) {
+        error.textContent = 'El mínimo no puede ser mayor que el máximo.'
+        return
+    }
+
+    error.textContent = ''
+    precioAplicado = { minimo: minimo, maximo: maximo }
+    reiniciarYAplicar()
+}
+
+function limpiarPrecio() {
+    formulario.precio_min.value = 0
+    formulario.precio_max.value = precioMaximo
+    document.getElementById('error-precio').textContent = ''
+    precioAplicado = { minimo: 0, maximo: precioMaximo }
+}
+
 function limpiarFiltros() {
     formulario.reset()
+    limpiarPrecio()
     buscador.value = ''
     reiniciarYAplicar()
 }
@@ -262,8 +291,7 @@ function quitarFiltro(boton) {
     if (quitar === 'coleccion' || quitar === 'rareza') {
         formulario.querySelector(`input[name="${quitar}"][value="${valor}"]`).checked = false
     } else if (quitar === 'precio') {
-        formulario.precio_min.value = 0
-        formulario.precio_max.value = precioMaximo
+        limpiarPrecio()
     } else if (quitar === 'stock') {
         formulario.stock.checked = false
     } else if (quitar === 'texto') {
@@ -274,17 +302,28 @@ function quitarFiltro(boton) {
 }
 
 // Eventos
-formulario.addEventListener('input', reiniciarYAplicar)
+formulario.addEventListener('input', (evento) => {
+    // El precio se aplica solo con el boton "Aplicar"
+    if (evento.target.name === 'precio_min' || evento.target.name === 'precio_max') {
+        return
+    }
+    reiniciarYAplicar()
+})
 
+// "Aplicar" (o Enter en un campo de precio) envia el formulario
 formulario.addEventListener('submit', (evento) => {
     evento.preventDefault()
+    aplicarPrecio()
 })
 
 formulario.addEventListener('click', (evento) => {
-    if (evento.target.id === 'limpiar') {
-        limpiarFiltros()
+    if (evento.target.id === 'limpiar-precio') {
+        limpiarPrecio()
+        reiniciarYAplicar()
     }
 })
+
+botonLimpiar.addEventListener('click', limpiarFiltros)
 
 buscador.addEventListener('input', reiniciarYAplicar)
 
@@ -326,6 +365,7 @@ try {
     rarezas = categorias.rarezas
 
     precioMaximo = Math.max(...productos.map((producto) => producto.precio))
+    precioAplicado = { minimo: 0, maximo: precioMaximo }
 
     // Busqueda que llega desde otra pagina (catalogo.html?q=...)
     const parametros = new URLSearchParams(window.location.search)

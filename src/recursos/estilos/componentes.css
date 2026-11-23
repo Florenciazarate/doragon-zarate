@@ -608,3 +608,39 @@ dialog.panel-carrito::backdrop {
 .barra.rojo {
   --color-barra: var(--color-rojo);
 }
+
+/* Cantidad dentro del panel del carrito */
+.panel-carrito .cantidad {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.panel-carrito .cantidad button {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-chico);
+  background-color: var(--color-campo);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.panel-carrito .cantidad button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.panel-carrito .cantidad .quitar {
+  width: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-texto);
+}

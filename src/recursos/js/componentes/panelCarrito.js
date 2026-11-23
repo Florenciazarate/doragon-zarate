@@ -1,7 +1,8 @@
 import { URL_PRODUCTOS } from '../config.js'
 import obtenerDatos from '../datos.js'
 import { formatoPrecio } from '../utilidades/formato.js'
-import { leerCarrito, contarUnidades } from '../utilidades/carrito.js'
+import { leerCarrito, contarUnidades, cambiarCantidad } from '../utilidades/carrito.js'
+import { fijarContador } from '../utilidades/contador.js'
 
 // Panel lateral con el resumen del carrito (se abre al agregar o desde el icono)
 // Usamos un <dialog> con showModal(), como vimos en clase con el dialogo
@@ -37,7 +38,12 @@ function crearLista(productosEnCarro) {
             <img src="${producto.imagen}" alt="" width="48" height="66">
             <div>
                 <p class="nombre">${producto.nombre}</p>
-                <p class="detalle">Cantidad: ${item.cantidad}</p>
+                <div class="cantidad" data-id="${producto.id}">
+                    <button type="button" data-cambio="-1" aria-label="Restar una unidad de ${producto.nombre}">−</button>
+                    <span aria-label="Cantidad">${item.cantidad}</span>
+                    <button type="button" data-cambio="1" aria-label="Sumar una unidad de ${producto.nombre}" ${item.cantidad >= producto.stock ? 'disabled' : ''}>+</button>
+                    <button class="quitar" type="button" data-cambio="quitar">Quitar</button>
+                </div>
             </div>
             <p class="precio">${formatoPrecio(importe)}</p>
         </li>
@@ -91,8 +97,33 @@ async function abrirPanel(agregado) {
     }
 }
 
+// Suma, resta o quita un producto desde el panel
+function cambiarDesdePanel(boton) {
+    const id = boton.closest('.cantidad').dataset.id
+    const item = leerCarrito().find((registro) => {
+        return registro.id === id
+    })
+    const stock = buscarProducto(id).stock
+
+    let nuevaCantidad = 0 //<- "quitar"
+    if (boton.dataset.cambio !== 'quitar') {
+        nuevaCantidad = Math.min(item.cantidad + Number(boton.dataset.cambio), stock)
+    }
+
+    const productosEnCarro = cambiarCantidad(id, nuevaCantidad)
+    fijarContador(contarUnidades(productosEnCarro))
+    renderizarPanel(null) //<- sin el aviso de "agregaste"
+}
+
 // Eventos
 panel.addEventListener('click', (evento) => {
+    const boton = evento.target.closest('[data-cambio]')
+
+    if (boton) {
+        cambiarDesdePanel(boton)
+        return
+    }
+
     // Cerramos con los botones o haciendo clic afuera del panel (en el fondo)
     if (evento.target.closest('[data-cerrar]') || evento.target === panel) {
         panel.close()

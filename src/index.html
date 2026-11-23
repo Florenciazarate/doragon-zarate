@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="./recursos/estilos/componentes.css">
   <link rel="stylesheet" href="./recursos/estilos/paginas.css">
   <link rel="stylesheet" href="./recursos/estilos/interaccion.css">
+  <link rel="stylesheet" href="./recursos/estilos/catalogo.css">
 </head>
 <body>
 
@@ -92,7 +93,7 @@
 
         <p class="acciones">
           <a class="boton amarillo" href="catalogo.html">Tirá ahora</a>
-          <a class="enlace" href="catalogo.html">Ver detalle del sobre</a>
+          <button class="enlace" type="button" data-accion="detalle" data-id="legendario-shenron">Ver detalle del sobre</button>
         </p>
       </article>
 
@@ -151,6 +152,8 @@
 
       <ul class="grilla" id="destacados"></ul>
     </section>
+
+    <dialog class="ventana" id="detalle" aria-labelledby="detalle-titulo"></dialog>
 
   </main>
 
