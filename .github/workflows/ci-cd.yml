@@ -1,0 +1,49 @@
+# CI/CD Doragon
+# CI -> en cada push o pull request a main corren los tests
+# CD -> si los tests pasan (y es un push a main) se publica en Vercel
+name: CI/CD Doragon
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  tests:
+    name: Tests unitarios
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Ejecutar los tests (node --test)
+        run: npm test
+
+  deploy:
+    name: Despliegue en Vercel
+    needs: tests #<- solo corre si los tests pasaron
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - name: Descargar el código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Instalar la herramienta de Vercel
+        run: npm install --global vercel@latest
+
+      - name: Publicar en producción
+        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
