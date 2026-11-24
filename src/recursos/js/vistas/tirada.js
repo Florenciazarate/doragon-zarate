@@ -259,7 +259,7 @@ function mostrarResultado(id) {
 
     apertura.hidden = true
     resultado.hidden = false
-    resultado.querySelector('#reveal-titulo').focus()
+    document.getElementById('reveal-titulo').focus()
 }
 
 // Compartir-------

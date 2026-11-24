@@ -355,7 +355,7 @@ botonMas.addEventListener('click', () => {
 })
 
 lista.addEventListener('click', (evento) => {
-    const boton = evento.target.closest("[data-accion='detalle']")
+    const boton = evento.target.closest('[data-accion="detalle"]')
 
     if (boton) {
         const producto = productos.find((item) => item.id === boton.dataset.id)

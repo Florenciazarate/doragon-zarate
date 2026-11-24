@@ -89,7 +89,7 @@ function validarCampo(campo) {
 
 // Valida todos los campos habilitados y muestra un aviso general
 function validarFormulario(formulario, aviso) {
-    const campos = formulario.querySelectorAll("input:not([type='radio']):not(:disabled), select, textarea")
+    const campos = formulario.querySelectorAll('input:not([type="radio"]):not(:disabled), select, textarea')
     const camposInvalidos = []
 
     campos.forEach((campo) => {

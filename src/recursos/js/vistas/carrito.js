@@ -126,7 +126,7 @@ lista.addEventListener('change', (evento) => {
 })
 
 lista.addEventListener('click', (evento) => {
-    const boton = evento.target.closest("[data-accion='quitar']")
+    const boton = evento.target.closest('[data-accion="quitar"]')
 
     if (boton) {
         quitarItem(boton.dataset.id)

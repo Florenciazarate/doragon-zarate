@@ -28,7 +28,7 @@ let inventario = []
 
 // Metodo de pago-------
 function mostrarMetodo() {
-    const elegido = formulario.querySelector("input[name='metodo-pago']:checked").value
+    const elegido = formulario.querySelector('input[name="metodo-pago"]:checked').value
 
     bloques.forEach((bloque) => {
         const activo = bloque.dataset.metodo === elegido
@@ -152,7 +152,7 @@ formulario.addEventListener('change', (evento) => {
 formulario.addEventListener('focusout', (evento) => {
     const campo = evento.target
 
-    if (campo.matches("input:not([type='radio'])") && campo.value !== '') {
+    if (campo.matches('input:not([type="radio"])') && campo.value !== '') {
         validarCampo(campo)
     }
 })

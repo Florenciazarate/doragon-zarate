@@ -88,7 +88,7 @@ function cambiarCantidad(nueva) {
     const maximo = Math.max(producto.stock, 1)
     cantidad = Math.min(Math.max(nueva || 1, 1), maximo)
 
-    ventana.querySelector('#detalle-cantidad').value = cantidad
+    document.getElementById('detalle-cantidad').value = cantidad
     ventana.querySelector('[data-total]').textContent = formatoPrecio(producto.precio * cantidad)
 }
 
