@@ -2,6 +2,10 @@ import { fijarContador } from './utilidades/contador.js'
 import { leerCarrito, agregarProducto, contarUnidades } from './utilidades/carrito.js'
 import { filtrarEntrada, validarCampo, validarFormulario, limpiarErrores } from './utilidades/validaciones.js'
 import { abrirPanel } from './componentes/panelCarrito.js'
+import { crearMenuCuenta } from './componentes/menuCuenta.js'
+
+// Menu desplegable del perfil
+crearMenuCuenta()
 
 // Contador del carrito con lo guardado en localStorage
 fijarContador(contarUnidades(leerCarrito()))

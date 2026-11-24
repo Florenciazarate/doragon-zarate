@@ -1,4 +1,11 @@
-import { URL_PRODUCTOS, URL_PROBABILIDADES, URL_CARTAS, URL_INVENTARIO, URL_CATEGORIAS } from '../config.js'
+import {
+    URL_PRODUCTOS,
+    URL_PROBABILIDADES,
+    URL_CARTAS,
+    URL_INVENTARIO,
+    URL_CATEGORIAS,
+    CLAVE_NO_PREGUNTAR
+} from '../config.js'
 import obtenerDatos, { mostrarError } from '../datos.js'
 import { sortearRareza, elegirAlAzar } from '../utilidades/sorteo.js'
 import { numeroCarta } from '../utilidades/formato.js'
@@ -21,6 +28,9 @@ const botonCompartir = document.getElementById('compartir')
 const mensajeCompartir = document.getElementById('mensaje-compartir')
 const progresoColeccion = document.getElementById('progreso-coleccion')
 const duplicadasResumen = document.getElementById('duplicadas-resumen')
+const confirmar = document.getElementById('confirmar-apertura')
+const confirmarTexto = document.getElementById('confirmar-texto')
+const noPreguntar = document.getElementById('no-preguntar')
 
 // Datos de los JSON (se cargan al final con fetch)
 let productos = []
@@ -271,6 +281,33 @@ async function compartirResultado() {
     }
 }
 
+// Abrir otro-------
+// Se abre otro del mismo sobre; si ya no quedan, el primero disponible
+function elegirSiguienteSobre() {
+    const sobres = leerSobres()
+    const mismo = sobres.find((item) => {
+        return item.id === sobre.id
+    })
+    return mismo || sobres[0]
+}
+
+function abrirOtro() {
+    const siguiente = elegirSiguienteSobre()
+
+    // Si el usuario marco "No volver a preguntar", abrimos directo
+    if (localStorage.getItem(CLAVE_NO_PREGUNTAR) === 'si') {
+        mostrarResultado(siguiente.id)
+        return
+    }
+
+    const nombre = buscarProducto(siguiente.id).nombre
+    const quedan = siguiente.cantidad === 1 ? 'Te queda 1.' : `Te quedan ${siguiente.cantidad}.`
+    confirmarTexto.textContent = `Vas a abrir un ${nombre}. ${quedan}`
+    confirmar.dataset.sobre = siguiente.id
+    noPreguntar.checked = false
+    confirmar.showModal()
+}
+
 // Eventos
 botonCompartir.addEventListener('click', compartirResultado)
 
@@ -284,11 +321,21 @@ apertura.addEventListener('click', (evento) => {
 
 resultado.addEventListener('click', (evento) => {
     if (evento.target.dataset.accion === 'otro') {
-        // Volvemos a la lista de sobres
-        renderizarApertura()
-        resultado.hidden = true
-        apertura.hidden = false
-        apertura.querySelector('h2').focus()
+        abrirOtro()
+    }
+})
+
+confirmar.addEventListener('click', (evento) => {
+    const respuesta = evento.target.dataset.respuesta
+
+    if (respuesta === 'si') {
+        if (noPreguntar.checked) {
+            localStorage.setItem(CLAVE_NO_PREGUNTAR, 'si') //<- se recuerda para las proximas veces
+        }
+        confirmar.close()
+        mostrarResultado(confirmar.dataset.sobre)
+    } else if (respuesta === 'no') {
+        confirmar.close()
     }
 })
 

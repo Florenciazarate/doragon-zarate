@@ -34,3 +34,32 @@
   border: 1px solid var(--color-borde);
   border-radius: var(--radio-grande);
 }
+
+/* Confirmacion para abrir otro sobre */
+.confirmar-apertura {
+  width: min(26rem, calc(100% - 2rem));
+  padding: var(--espacio-3);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-grande);
+  background-color: var(--color-blanco);
+  color: var(--color-tinta);
+}
+
+.confirmar-apertura[open] {
+  display: grid;
+  gap: var(--espacio-2);
+}
+
+.confirmar-apertura::backdrop {
+  background-color: rgba(27, 27, 46, 0.55);
+}
+
+.confirmar-apertura h2 {
+  font-size: 1.25rem;
+}
+
+.confirmar-apertura .acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--espacio-1);
+}

@@ -148,8 +148,55 @@
   background-color: var(--color-primario);
 }
 
-.cabecera .icono.cuenta {
+.cabecera .icono.cuenta,
+.cabecera .menu-cuenta {
   order: 3;
+}
+
+/* Menu desplegable del perfil */
+.cabecera .menu-cuenta {
+  position: relative;
+}
+
+.cabecera .menu-cuenta .icono.cuenta {
+  cursor: pointer;
+}
+
+.cabecera .desplegable {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 10;
+  display: grid;
+  min-width: 14rem;
+  padding: 0.5rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-medio);
+  background-color: var(--color-blanco);
+  box-shadow: 0 12px 30px rgba(27, 27, 46, 0.12);
+}
+
+.cabecera .desplegable a {
+  display: block;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radio-chico);
+  font-size: 0.9375rem;
+}
+
+.cabecera .desplegable a:hover,
+.cabecera .desplegable a:focus-visible {
+  background-color: var(--color-campo);
+}
+
+.cabecera .desplegable .salir {
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--color-borde);
+}
+
+.cabecera .desplegable .salir a {
+  font-weight: 600;
+  color: var(--color-rojo);
 }
 
 .cabecera .icono .contador {
@@ -278,7 +325,8 @@
     order: 4;
   }
 
-  .cabecera .icono.cuenta {
+  .cabecera .icono.cuenta,
+  .cabecera .menu-cuenta {
     order: 5;
   }
 

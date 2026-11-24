@@ -62,6 +62,19 @@
 
     <div class="resultado" id="resultado" hidden></div>
 
+    <dialog class="confirmar-apertura" id="confirmar-apertura" aria-labelledby="confirmar-titulo">
+      <h2 id="confirmar-titulo">¿Abrir otro sobre?</h2>
+      <p id="confirmar-texto"></p>
+      <label class="casilla">
+        <input type="checkbox" id="no-preguntar">
+        No volver a preguntar
+      </label>
+      <div class="acciones">
+        <button class="boton secundario" type="button" data-respuesta="no">Cancelar</button>
+        <button class="boton primario" type="button" data-respuesta="si">Sí, abrir</button>
+      </div>
+    </dialog>
+
     <div class="resumen">
       <section class="tarjeta" aria-labelledby="progreso-titulo">
         <h2 id="progreso-titulo">Progreso de colección</h2>
