@@ -3,7 +3,7 @@
 Proyecto individual para el IEFI de **Aplicaciones Web 1** (IES Siglo 21, comisión MB).
 Tienda online de sobres y cartas: catálogo con filtros, carrito persistente, pago con envío del pedido por WhatsApp, apertura de los sobres comprados e inventario de cartas.
 
-- **Sitio publicado:** _(completar con el link de Vercel)_
+- **Sitio publicado:** https://doragon-zarate.vercel.app
 - **Repositorio:** https://github.com/Florenciazarate/doragon-zarate
 
 ## Cómo ejecutarlo
