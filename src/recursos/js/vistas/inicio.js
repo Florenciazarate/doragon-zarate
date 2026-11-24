@@ -2,6 +2,7 @@ import { URL_PRODUCTOS, URL_CATEGORIAS, URL_PROBABILIDADES } from '../config.js'
 import obtenerDatos, { mostrarError } from '../datos.js'
 import { crearTarjeta } from '../componentes/tarjeta.js'
 import { abrirDetalle } from './detalle.js'
+import { leerSobres } from '../utilidades/coleccion.js'
 
 // Referenciamos elementos del html
 const destacados = document.getElementById('destacados')
@@ -10,6 +11,15 @@ const destacados = document.getElementById('destacados')
 let productos = []
 let colecciones = []
 let probabilidades = {}
+
+// Botones de tiradas: si ya compraste sobres, te llevan a abrirlos;
+// si no, al catalogo para comprar (es lo que dice el html por defecto)
+if (leerSobres().length > 0) {
+    document.querySelectorAll('[data-tirar]').forEach((boton) => {
+        boton.href = './tirada.html'
+        boton.textContent = boton.classList.contains('chico') ? 'Tirar' : 'Tirá ahora'
+    })
+}
 
 // Abre el mismo detalle (popup) que en el catalogo
 function mostrarDetalle(id) {

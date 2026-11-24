@@ -1,3 +1,5 @@
+import { leerSobres } from '../utilidades/coleccion.js'
+
 // Menu desplegable del icono de perfil (cabecera)
 // En el html el icono es un enlace a cuenta.html: si JS no carga, igual funciona.
 // Con JS lo cambiamos por un boton que abre el menu.
@@ -17,7 +19,14 @@ function crearMenuCuenta() {
     const contenedor = document.createElement('div')
     contenedor.className = 'menu-cuenta'
 
-    let opcionesHTML = ''
+    // "Mis sobres": acceso directo para abrir los sobres comprados (con la cantidad)
+    let sinAbrir = 0
+    leerSobres().forEach((item) => {
+        sinAbrir += item.cantidad
+    })
+    const cantidad = sinAbrir > 0 ? ` <span class="cantidad-sobres">${sinAbrir}</span>` : ''
+
+    let opcionesHTML = `<li><a href="./tirada.html">Mis sobres${cantidad}</a></li>`
     opciones.forEach((opcion) => {
         opcionesHTML += `<li><a href="${opcion.href}">${opcion.texto}</a></li>`
     })
