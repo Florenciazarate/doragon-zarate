@@ -9,9 +9,9 @@ Tienda online de sobres y cartas: catálogo con filtros, carrito persistente, pa
 ## Cómo ejecutarlo
 
 ```bash
-pn install     # instala five-server
-pn dev         # levanta el sitio (carpeta src)
-pn test        # corre los tests (node --test)
+pnpm install   # instala five-server
+pnpm dev       # levanta el sitio (carpeta src)
+pnpm test      # corre los tests (node --test)
 ```
 
 > El sitio se abre con un servidor (no con doble clic en el HTML) porque los datos se cargan con `fetch` desde archivos JSON.
@@ -44,6 +44,12 @@ tests/                        tests con el test runner nativo de Node
 6. **Confirmación:** número de pedido, total y entrega estimada.
 7. **Tirada:** solo se pueden abrir los sobres comprados. Las cartas obtenidas se suman al inventario y se puede compartir el resultado.
 8. **Mi cuenta:** inventario (cartas compradas + cartas de las tiradas) con estadísticas y progreso calculados en base a los datos reales.
+
+## Datos de prueba
+
+- **Tarjeta:** cualquier número de 16 dígitos (por ejemplo `4242 4242 4242 4242`), un vencimiento futuro en formato MM/AA y un CVV de 3 números. No se procesa ningún pago real.
+- **Código de descuento:** `DORAGON10` (10% sobre el subtotal).
+- **WhatsApp:** el pedido se envía al número configurado en `src/recursos/js/config.js`.
 
 ## CI/CD
 
